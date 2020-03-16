@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>hellospring</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- Spring Dispatcher(Front Controller) -->
+  <!-- 모든 사용자 요청을 가로채서 처리한 후에 적합한 컨트롤러를 찾아서 그 객체로 요청과 응답을 전송 -->
+  <servlet>
+  <servlet-name>
+  spring
+  </servlet-name>
+  <servlet-class>
+  org.springframework.web.servlet.DispatcherServlet
+  </servlet-class>
+  </servlet>
+  <!-- 스프링 웹컨텍스트를 위한 설정이 필요 -->
+  <!-- 기본적으로는 ${servlet-name}-servlet.xml -->
+  <servlet-mapping>
+  <servlet-name>
+  spring
+  </servlet-name>
+  <url-pattern>
+  /
+  </url-pattern>
+  <!-- 모든 요청을 spring이 가로챈다 -->
+  </servlet-mapping>
+  
+   <!-- Encoding Filter -->
+   <filter>
+   	<filter-name>encodingFilter</filter-name>
+   	<filter-class>
+   	org.springframework.web.filter.CharacterEncodingFilter
+   	</filter-class>
+   	<init-param>
+   		<param-name>encoding</param-name>
+   		<param-value>UTF-8</param-value>
+   	</init-param>
+   </filter>
+   
+   <filter-mapping>
+   	<filter-name>encodingFilter</filter-name>	
+   	<url-pattern>/*</url-pattern>
+   </filter-mapping>
+</web-app>
